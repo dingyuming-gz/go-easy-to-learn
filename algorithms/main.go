@@ -25,6 +25,7 @@ func selectionSort(arr []int) {
 }
 
 // bubbleSort 冒泡排序
+// 两两比较，大的往右
 func bubbleSort(arr []int) {
 	if arr == nil || len(arr) < 2 {
 		return
@@ -45,7 +46,8 @@ func bubbleSort(arr []int) {
 	}
 }
 
-// insertionSort 插入排序
+// insertionSort 插入排序（最常用 最差O(N^2) 最好 O(N)）
+// 将当前的数依次和左边比较，小的往左交换，直到左不再大于0或者不再有左
 func insertionSort(arr []int) {
 	if arr == nil || len(arr) < 2 {
 		return
