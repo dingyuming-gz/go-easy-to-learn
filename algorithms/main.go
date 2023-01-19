@@ -45,6 +45,21 @@ func bubbleSort(arr []int) {
 	}
 }
 
+// insertionSort 插入排序
+func insertionSort(arr []int) {
+	if arr == nil || len(arr) < 2 {
+		return
+	}
+	n := len(arr)
+	for i := 1; i < n; i++ {
+		for j := i - 1; j >= 0 && arr[j] > arr[j+1]; j-- {
+			//1、左不再大于0
+			//2、不再有左
+			swap(&arr[j], &arr[j+1])
+		}
+	}
+}
+
 // 不借用第三个变量实现交换
 func swap(a, b *int) {
 	//方式一
@@ -62,7 +77,8 @@ func main() {
 	log.Println(arr)
 
 	//selectionSort(arr)
-	bubbleSort(arr)
+	//bubbleSort(arr)
+	insertionSort(arr)
 
 	log.Println(arr)
 }
