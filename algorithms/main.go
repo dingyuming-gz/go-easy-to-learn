@@ -2,6 +2,7 @@ package main
 
 import "log"
 
+// -------------------- 排序算法 ------------------------
 // selectionSort 选择排序
 // 每次选择一个最小值放到最左边
 func selectionSort(arr []int) {
@@ -62,6 +63,8 @@ func insertionSort(arr []int) {
 	}
 }
 
+// -------------------- 查找算法 ------------------------
+
 // 不借用第三个变量实现交换
 func swap(a, b *int) {
 	//方式一
@@ -78,9 +81,12 @@ func main() {
 	arr := []int{10, 3, 0, -9, -1, 2, 100, -22, 54, 23, 7}
 	log.Println(arr)
 
+	// ------- 排序算法 --------
 	//selectionSort(arr)
 	//bubbleSort(arr)
 	insertionSort(arr)
+
+	// ------- 查找算法 --------
 
 	log.Println(arr)
 }
