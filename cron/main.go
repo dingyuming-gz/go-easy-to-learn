@@ -2,38 +2,49 @@ package main
 
 import (
 	"context"
-	"flag"
 	"fmt"
 	"os"
+	"time"
 
-	"github.com/example/scheduler/scheduler"
+	"github.com/dingyuming-gz/go-easy-to-learn/cron/scheduler"
 )
 
-var (
-	apiEndpoint            = flag.String("api-endpoint", "", "API endpoint")
-	dbDriver               = flag.String("db-driver", "", "database driver name")
-	dbConnString           = flag.String("db-conn-string", "", "database connection string")
-	logFile                = flag.String("log-file", "", "log file name")
-	taskTimeout            = flag.Duration("task-timeout", 0, "task timeout")
-	taskIterations         = flag.Int("task-iterations", 0, "task iterations")
-	backoffInitialInterval = flag.Duration("backoff-initial-interval", 0, "initial interval of backoff strategy")
-	backoffMultiplier      = flag.Float64("backoff-multiplier", 0, "multiplier of backoff strategy")
-	maxBackoffTime         = flag.Duration("max-backoff-time", 0, "maximum interval of backoff strategy")
-)
+//var (
+//	apiEndpoint            = flag.String("api-endpoint", "", "API endpoint")
+//	dbDriver               = flag.String("db-driver", "", "database driver name")
+//	dbConnString           = flag.String("db-conn-string", "", "database connection string")
+//	logFile                = flag.String("log-file", "", "log file name")
+//	taskTimeout            = flag.Duration("task-timeout", 0, "task timeout")
+//	taskIterations         = flag.Int("task-iterations", 0, "task iterations")
+//	backoffInitialInterval = flag.Duration("backoff-initial-interval", 0, "initial interval of backoff strategy")
+//	backoffMultiplier      = flag.Float64("backoff-multiplier", 0, "multiplier of backoff strategy")
+//	maxBackoffTime         = flag.Duration("max-backoff-time", 0, "maximum interval of backoff strategy")
+//)
 
 func main() {
-	flag.Parse()
-
+	//flag.Parse()
+	//
+	//config := &scheduler.SchedulerConfig{
+	//	TaskTimeout:            *taskTimeout,
+	//	TaskIterations:         *taskIterations,
+	//	LogFile:                *logFile,
+	//	DBDriver:               *dbDriver,
+	//	DBConnString:           *dbConnString,
+	//	APIEndpoint:            *apiEndpoint,
+	//	BackoffInitialInterval: *backoffInitialInterval,
+	//	BackoffMultiplier:      *backoffMultiplier,
+	//	MaxBackoffTime:         *maxBackoffTime,
+	//}
 	config := &scheduler.SchedulerConfig{
-		TaskTimeout:            *taskTimeout,
-		TaskIterations:         *taskIterations,
-		LogFile:                *logFile,
-		DBDriver:               *dbDriver,
-		DBConnString:           *dbConnString,
-		APIEndpoint:            *apiEndpoint,
-		BackoffInitialInterval: *backoffInitialInterval,
-		BackoffMultiplier:      *backoffMultiplier,
-		MaxBackoffTime:         *maxBackoffTime,
+		TaskTimeout:            time.Second * 10,
+		TaskIterations:         3,
+		LogFile:                "scheduler.log",
+		DBDriver:               "mysql",
+		DBConnString:           "user=root password=111111 dbname=mydb sslmode=disable",
+		APIEndpoint:            "https://www.maka.im/mk-api-services-v7/user/v1/abtestconfig/plat/3982236",
+		BackoffInitialInterval: time.Second * 1,
+		BackoffMultiplier:      2,
+		MaxBackoffTime:         time.Second * 30,
 	}
 
 	ctx := context.Background()

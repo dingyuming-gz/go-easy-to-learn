@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/example/api"
-	"github.com/example/database"
-	"github.com/example/logger"
+	"github.com/dingyuming-gz/go-easy-to-learn/cron/api"
+	"github.com/dingyuming-gz/go-easy-to-learn/cron/database"
+	"github.com/dingyuming-gz/go-easy-to-learn/cron/logger"
 	"github.com/go-co-op/gocron"
 )
 

@@ -31,12 +31,14 @@ func (d *Database) Connect() error {
 
 	db, err := sql.Open(d.driver, d.connStr)
 	if err != nil {
+		println("sql.Open", err)
 		return err
 	}
 
 	err = db.Ping()
 	if err != nil {
 		db.Close()
+		println("sql.Open", err)
 		return err
 	}
 
